@@ -7,6 +7,7 @@
     <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
     <script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
     <script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
   </head>
   <body>
@@ -50,43 +51,9 @@
       function parseMarkdown(rawText){
         var lineArray = rawText.split('\n');
         for(var i = 0; i < lineArray.length; i++){
-          lineArray[i] = parseLine(lineArray[i]);
+          lineArray[i] = marked(lineArray[i]);
         }
         return lineArray.join('');
-      }
-
-      function parseLine(inputLine){
-        var array = inputLine.split(' ')
-        var symbol = array.shift();
-        var type;
-
-        switch (symbol) {
-          case '#':
-            type='h1';
-            break;
-          case '##':
-            type='h2';
-            break;
-          case '###':
-            type='h3';
-            break;
-          case '####':
-            type='h4';
-            break;
-          case '#####':
-            type='h5';
-            break;
-          case '######':
-            type='h6';
-            break;
-          case '*':
-            type='li';
-            break;
-          default:
-            type=''
-        }
-        var parsedLine = '<' + type + '>' + array.join(' ') + '</' + type + '>';
-        return parsedLine;
       }
     </script>
   </body>
