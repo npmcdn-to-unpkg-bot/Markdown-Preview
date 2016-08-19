@@ -15,17 +15,20 @@
 
       var InputBox = React.createClass({
         getInitialState: function() {
-          return {value: 'Hello!'};
+          var initialText = 'Hello!'
+          var parsedText = parseMarkdown(initialText)
+          return {value: initialText, converted:parsedText};
         },
         handleChange: function(event){
           this.setState({value:event.target.value});
-          var parsedText = parseMarkdown(this.state.value)
+          var parsedText = parseMarkdown(event.target.value)
+          this.setState({converted:parsedText});
         },
         render: function() {
           return (
             <div>
               <textarea rows="40" cols="70" type='text' value={this.state.value} onChange={this.handleChange}></textarea>
-              <OutputBox value={this.state.value}/>
+              <OutputBox value={this.state.converted}/>
             </div>
           );
         }
@@ -46,8 +49,44 @@
 
       function parseMarkdown(rawText){
         var lineArray = rawText.split('\n');
+        for(var i = 0; i < lineArray.length; i++){
+          lineArray[i] = parseLine(lineArray[i]);
+        }
+        return lineArray.join('');
+      }
 
-        return lineArray.join('\n');
+      function parseLine(inputLine){
+        var array = inputLine.split(' ')
+        var symbol = array.shift();
+        var type;
+
+        switch (symbol) {
+          case '#':
+            type='h1';
+            break;
+          case '##':
+            type='h2';
+            break;
+          case '###':
+            type='h3';
+            break;
+          case '####':
+            type='h4';
+            break;
+          case '#####':
+            type='h5';
+            break;
+          case '######':
+            type='h6';
+            break;
+          case '*':
+            type='li';
+            break;
+          default:
+            type=''
+        }
+        var parsedLine = '<' + type + '>' + array.join(' ') + '</' + type + '>';
+        return parsedLine;
       }
     </script>
   </body>
