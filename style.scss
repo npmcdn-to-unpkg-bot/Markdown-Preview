@@ -1,19 +1,24 @@
 $primaryColor: #eeffcc;
 $boxMargin: 20px;
+$boxHeight: 600px;
+$boxWidth: 45%;
 
 body {
     background: $primaryColor;
 }
-p {
-  background-color: $primaryColor;
-}
 .input {
-  background-color: $primaryColor;
-  overflow-y: scroll;
-  margin: $boxMargin;
   float: left;
-  height: 400px;
 }
 .output {
+  border: 1px solid;
+  padding-left: 2px;
+  float: right;
+}
+.input, .output {
   margin: $boxMargin;
+  height: $boxHeight;
+  min-width: $boxWidth;
+  background-color: white;
+  display: block;
+  overflow-y: scroll;
 }

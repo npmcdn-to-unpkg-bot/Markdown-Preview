@@ -1,17 +1,20 @@
 body {
   background: #eeffcc; }
 
-p {
-  background-color: #eeffcc; }
-
 .input {
-  background-color: #eeffcc;
-  overflow-y: scroll;
-  margin: 20px;
-  float: left;
-  height: 400px; }
+  float: left; }
 
 .output {
-  margin: 20px; }
+  border: 1px solid;
+  padding-left: 2px;
+  float: right; }
+
+.input, .output {
+  margin: 20px;
+  height: 600px;
+  min-width: 45%;
+  background-color: white;
+  display: block;
+  overflow-y: scroll; }
 
 /*# sourceMappingURL=style.css.map */
