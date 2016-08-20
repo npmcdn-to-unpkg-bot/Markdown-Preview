@@ -1,0 +1,19 @@
+$primaryColor: #eeffcc;
+$boxMargin: 20px;
+
+body {
+    background: $primaryColor;
+}
+p {
+  background-color: $primaryColor;
+}
+.input {
+  background-color: $primaryColor;
+  overflow-y: scroll;
+  margin: $boxMargin;
+  float: left;
+  height: 400px;
+}
+.output {
+  margin: $boxMargin;
+}
