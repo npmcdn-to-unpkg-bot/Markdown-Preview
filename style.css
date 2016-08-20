@@ -12,7 +12,7 @@ body {
 .input, .output {
   margin: 20px;
   height: 600px;
-  min-width: 45%;
+  width: 45%;
   background-color: white;
   display: block;
   overflow: scroll; }

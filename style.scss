@@ -17,7 +17,7 @@ body {
 .input, .output {
   margin: $boxMargin;
   height: $boxHeight;
-  min-width: $boxWidth;
+  width: $boxWidth;
   background-color: white;
   display: block;
   overflow: scroll;
